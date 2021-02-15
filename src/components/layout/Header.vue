@@ -1,70 +1,84 @@
 <template>
-    <header class="navbar">
-        <img 
-        src="../../assets/github_logo.png" 
-        alt="logo"
-        height="50px"
-        width="50px">
-        <form>
-            <input type="text" placeholder="Search or jumb to...">
-        </form>
-        <a href="#!">Pull requests</a>
-        <a href="#!">Issues</a>
-        <a href="#!">Marketplace</a>
-        <a href="#!">Explore</a>
-        <div class="navbar-right">
-            <i class="fas fa-bell"></i>
-            <span>
-                <i class="fas fa-plus"></i>
-                <i class="fas fa-caret-down"></i>
-            </span>
-             <span id="navbar-right__last">
-                <img 
-                src="../../assets/github_logo.png" 
-                alt="logo"
-                height="23px"
-                width="23px">
-                <i class="fas fa-caret-down"></i>
-            </span>
-        </div>
+    <header>
+        <nav class="navbar">
+            <ul class="navbar-list">
+                <li class="navbar-list-item">
+                    <i class="fas fa-bars fa-2x menu-icon"></i>
+                </li>
+                <li class="navbar-list-item">
+                    <img 
+                    src="../../assets/github_logo.png" 
+                    alt="logo"
+                    height="40px"
+                    width="40px"
+                    style="border-radius: 50%"
+                    >
+                </li>
+                <li class="navbar-list-item nav-sm">
+                    <form>
+                        <input type="text" placeholder="Search or jumb to...">
+                    </form>
+                </li>
+                <li class="navbar-list-item nav-sm">
+                    <a href="#!">Pull requests</a>
+                </li>
+                <li class="navbar-list-item nav-sm">
+                    <a href="#!">Issues</a>
+                </li>
+                <li class="navbar-list-item nav-sm">
+                    <a href="#!">Marketplace</a>
+                </li>
+                <li class="navbar-list-item nav-sm">
+                    <a href="#!">Explore</a>
+                </li>
+                <div class="navbar-right">
+                    <a href="#!">
+                        <i class="fas fa-bell"></i>
+                    </a>
+                    <a href="#!" class="navbar-right__middle-item nav-sm">
+                        <i class="fas fa-plus i-padding"></i>
+                        <i class="fas fa-caret-down"></i>
+                    </a>
+                    <a href="#!" class="navbar-right__last-item nav-sm">
+                        <img 
+                        class="nav-sm"
+                        :src= "user.avatar_url" 
+                        alt="avatar"
+                        height="20px"
+                        width="20px"
+                        style="border-radius: 50%">
+                        <i class="fas fa-caret-down nav-sm"></i>
+                    </a>
+                </div>
+            </ul>
+        </nav>
     </header>
 </template>
 
 <script>
 export default {
-    
+    name: "Header",
+    props: ["user"]
 }
 </script>
 
 <style scoped>
-    .navbar {
+    .menu-icon{
+        display: none;
+    }
+    nav ul.navbar-list {
         display: flex;
         background: rgba(17, 17, 17, 0.97);
         align-items: center;
-        padding: 0 30px;
-        height: 4rem;
+        padding: 0 40px;
+        height: 3.5rem;
         font-family: 'Roboto', Helvetica, sans-serif;
     }
-    .navbar-right {
-        margin-left: auto;
+    nav ul {
+        list-style-type: none;
     }
-    .navbar-right i {
-        color: rgba(255, 255, 255, 1);
-    }
-    .navbar-right i.fas.fa-bell {
-        padding: 0 25px;
-    }
-    .navbar-right span#navbar-right__last {
-        padding: 0 20px;
-    }
-    .navbar-right span i.fas.fa-caret-down {
-        margin: 0 10px;
-    }
-    .navbar-right span img {
-        border-radius: 50%;
-    }
-    form, a {
-        margin-left: 20px;
+    nav ul li {
+        margin-right: 20px;
     }
     form input {
         height: 2rem;
@@ -81,5 +95,32 @@ export default {
     a {
         text-decoration: none;
         color: rgba(255, 255, 255, 1);
+    }
+    .navbar-right {
+        display: flex;
+        margin-left: auto;
+    }
+    .navbar-right__middle-item {
+        margin: 0 20px;
+    }
+    .navbar-right__last-item {
+        display: flex;
+    }
+    .i-padding {
+        padding-right: 8px;
+    }
+    
+    @media (max-width: 1000px) {
+        .nav-sm {
+            display: none;
+        }
+        .navbar-list-item img {
+            margin-left: 25vw;
+        }
+        .menu-icon{
+            display: block;
+            color: rgba(255, 255, 255, 1);
+            font-size: 1em;
+        }
     }
 </style>
